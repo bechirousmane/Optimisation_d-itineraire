@@ -1,8 +1,10 @@
-from sqlalchemy import Column, Integer, String, Date, ForeignKey, relationship
-from sqlalchemy.orm import declarative_base
+from sqlalchemy import Column, Integer, String, Date, ForeignKey
+from sqlalchemy.orm import declarative_base, relationship
+from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 
 Base = declarative_base()
+db = SQLAlchemy(model_class=Base)
 
 class User(Base):
     __tablename__ = 'users'
@@ -31,7 +33,7 @@ class Itinerary(Base):
 class BreakPoint(Base):
     __tablename__ ='breakpoints'
     id = Column(Integer, primary_key=True)
-    id_itinerary = Column(Integer, ForeignKey('itinerary.id'), nullable=False)
+    id_itinerary = Column(Integer, ForeignKey('itineraries.id'), nullable=False)
     name = Column(String(255), nullable=False)
     geoloc = Column(String(255), nullable=False)
-    Itinerary = relationship('Itinerary', back_populates='breakpoints')
+    itinerary = relationship('Itinerary', back_populates='breakpoints')
