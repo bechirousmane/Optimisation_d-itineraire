@@ -2,7 +2,7 @@ from  flask import Flask
 from config import Config
 from api.data_base.src.models import db, User
 from api.data_base.src.dbApi import DBApi
-from datetime import datetime
+from datetime import datetime 
 
 
 app = Flask(__name__)
@@ -14,7 +14,7 @@ with  app.app_context() :
     db_api = DBApi()
     db_api.start()
     birth_date = datetime.strptime('2001-01-17', '%Y-%m-%d').date()
-    user = User(id=1, name='Bechir', firstname='ousmane', birth=birth_date, email='obechir@gmail.com')
+    user = User(id=1, name='BECHIR', firstname='ousmane', birth=birth_date, email='obechir@gmail.com')
     user.set_password('bebebe')
     db.session.add(user)
     db.session.commit()
@@ -24,4 +24,3 @@ with  app.app_context() :
     
 if __name__=='__main__' :
     app.run(debug=True)
-    
