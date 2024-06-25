@@ -25,7 +25,7 @@ class User(Base):
 class Itinerary(Base):
     __tablename__ ='itineraries'
     id = Column(Integer, primary_key=True)
-    id_users = Column(Integer, ForeignKey('users.id'), nullable=False)
+    id_user = Column(Integer, ForeignKey('users.id'), nullable=False)
     name = Column(String(255), nullable=False)
     user = relationship('User', back_populates='itineraries')
     breakpoints = relationship('BreakPoint', back_populates='itinerary')

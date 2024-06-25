@@ -1,5 +1,5 @@
 from config import Config
-from api.data_base.src.models import db
+from api.src.data_base.models import db
 
 class DBApi: 
 
